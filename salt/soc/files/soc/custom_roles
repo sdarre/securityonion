@@ -21,3 +21,6 @@
 #
 # analyst:        westcoast_analyst, eastcoast_analyst
 # roles/read:     user-monitor:-
+
+events/tax:       soc-analyst
+events/claim:     soc-analyst

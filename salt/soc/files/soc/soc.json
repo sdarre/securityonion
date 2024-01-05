@@ -155,6 +155,8 @@
         "mostRecentlyUsedLimit": 5,
         "ackEnabled": false,
         "escalateEnabled": true,
+        "claimEnabled": true,
+        "cycling": true,
         "escalateRelatedEventsEnabled": {{ 'true' if CASE_MODULE == 'soc' else 'false' }},
         "aggregationActionsEnabled": true,
         "eventFields": {{ hunt_eventfields | json }},
@@ -176,6 +178,8 @@
         "mostRecentlyUsedLimit": 0,
         "ackEnabled": false,
         "escalateEnabled": true,
+        "claimEnabled": true,
+        "cycling": true,
         "escalateRelatedEventsEnabled": {{ 'true' if CASE_MODULE == 'soc' else 'false' }},
         "aggregationActionsEnabled": false,
         "eventFields": {{ hunt_eventfields | json }},
@@ -206,7 +210,8 @@
         "queryBaseFilter": "event.dataset:alert",
         "queryToggleFilters": [
           { "name": "acknowledged", "filter": "event.acknowledged:true", "enabled": false, "exclusive": true },
-          { "name": "escalated", "filter": "event.escalated:true", "enabled": false, "exclusive": true, "enablesToggles":["acknowledged"] }
+          { "name": "escalated", "filter": "event.escalated:true", "enabled": false, "exclusive": true, "enablesToggles":["acknowledged"] },
+          { "name": "claimedByOthers", "filter": "", "enabled": false, "exclusive": true } 
         ],
         "queries": {{ alerts_queries | json }},
         "actions": {{ menu_actions | json }}
@@ -223,6 +228,8 @@
         "ackEnabled": false,
         "escalateEnabled": false,
         "escalateRelatedEventsEnabled": false,
+        "claimEnabled": true,
+        "cycling": true,
         "aggregationActionsEnabled": false,
         "viewEnabled": true,
         "createLink": "/case/create",
